@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Pessoal</title>
+
+  <!-- Tailwind CSS (Play CDN – sem build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
+            body:    ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            accent: {
+              DEFAULT: '#e07b39',
+              light:   '#f09a5c',
+              dark:    '#c4612a',
+            },
+          },
+          transitionDuration: { DEFAULT: '300ms' },
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="font-body bg-stone-50 text-stone-800 dark:bg-stone-950 dark:text-stone-100 transition-colors duration-300">
+
+  <!-- ── NAVBAR ─────────────────────────────────────────── -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur border-b border-stone-200 dark:border-stone-800 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+
+      <!-- Brand -->
+      <a href="#top" class="font-display text-xl text-accent hover:text-accent-dark transition-colors">
+        &lt;/portfólio&gt;
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <li><a href="#sobre"       class="nav-link">Sobre</a></li>
+        <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+        <li><a href="#projetos"    class="nav-link">Projetos</a></li>
+        <li><a href="#interesses"  class="nav-link">Interesses</a></li>
+        <li><a href="#contato"     class="nav-link">Contato</a></li>
+      </ul>
+
+      <!-- Right: theme toggle + mobile menu -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" aria-label="Alternar tema"
+          class="w-9 h-9 rounded-full border border-stone-300 dark:border-stone-700 flex items-center justify-center text-stone-500 dark:text-stone-400 hover:border-accent hover:text-accent transition-colors">
+          <i class="fa-solid fa-moon text-sm" id="themeIcon"></i>
+        </button>
+        <!-- Hamburger -->
+        <button id="menuToggle" aria-label="Menu" class="md:hidden w-9 h-9 rounded-full border border-stone-300 dark:border-stone-700 flex items-center justify-center text-stone-500 dark:text-stone-400">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950">
+      <ul class="px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+        <li><a href="#sobre"       class="mobile-link">Sobre</a></li>
+        <li><a href="#habilidades" class="mobile-link">Habilidades</a></li>
+        <li><a href="#projetos"    class="mobile-link">Projetos</a></li>
+        <li><a href="#interesses"  class="mobile-link">Interesses</a></li>
+        <li><a href="#contato"     class="mobile-link">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header id="top" class="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+
+      <!-- Avatar -->
+      <div class="flex-shrink-0 text-center">
+        <div class="profile-ring">
+          <img src="assets/img/foto.jpeg" alt="Foto de perfil"
+               class="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover">
+        </div>
+        <div class="mt-3 flex flex-wrap justify-center gap-2">
+          <span class="px-2 py-0.5 rounded text-xs font-medium bg-accent/10 text-accent border border-accent/30">Ciência da Computação</span>
+          <span class="px-2 py-0.5 rounded text-xs font-medium bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300">UFLA</span>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="flex-1 text-center md:text-left">
+        <p class="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Portfólio Pessoal</p>
+        <h1 class="font-display text-4xl md:text-5xl leading-tight mb-4">
+          Olá! Eu sou<br>
+          <span class="text-accent italic">Hugo Prado Lima</span>
+        </h1>
+        <p class="text-stone-500 dark:text-stone-400 text-base md:text-lg leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">
+          Estudante de Ciência da Computação, apaixonado por açaí e pela criação de experiências digitais.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
+          <a href="#projetos" class="btn-primary">
+            <i class="fa-solid fa-diagram-project mr-2"></i>Ver projetos
+          </a>
+          <a href="#contato" class="btn-outline">
+            <i class="fa-solid fa-envelope mr-2"></i>Contato
+          </a>
+          <a href="https://github.com/pradohugo" target="_blank" rel="noreferrer" class="btn-ghost">
+            <i class="fa-brands fa-github mr-2"></i>GitHub
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn-ghost">
+            <i class="fa-brands fa-linkedin mr-2"></i>LinkedIn
+          </a>
+        </div>
+
+        <!-- Info cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto md:mx-0">
+          <div class="info-card">
+            <i class="fa-solid fa-graduation-cap text-accent mr-2"></i>
+            <div>
+              <span class="font-semibold text-sm">Curso</span>
+              <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">Bacharelado em Ciência da Computação — UFLA</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-bullseye text-accent mr-2 mt-0.5"></i>
+            <div>
+              <span class="font-semibold text-sm">Objetivo</span>
+              <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">Aprimorar habilidades em web e participar de projetos práticos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 space-y-20">
+
+    <!-- ── SOBRE ───────────────────────────────────────── -->
+    <section id="sobre" class="scroll-section">
+      <div class="section-header">
+        <h2 class="section-title">Sobre</h2>
+        <p class="section-sub">Uma breve descrição e trajetória.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="card">
+          <p class="mb-3 leading-relaxed">
+            Sou estudante de Ciência da Computação e gosto de adquirir conhecimento sobre os vários ramos da computação.
+          </p>
+          <p class="text-stone-500 dark:text-stone-400 leading-relaxed">
+            Nesta página, apresento minhas habilidades, interesses e projetos desenvolvidos ao longo do curso.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-4">Informações rápidas</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-location-dot text-accent w-4 text-center"></i>
+              <span><strong>Cidade:</strong> Ferraz de Vasconcelos, SP</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-language text-accent w-4 text-center"></i>
+              <span><strong>Idiomas:</strong> Português, Inglês (intermediário)</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-laptop-code text-accent w-4 text-center"></i>
+              <span><strong>Área:</strong> Desenvolvimento Web</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HABILIDADES ──────────────────────────────────── -->
+    <section id="habilidades" class="scroll-section">
+      <div class="section-header">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-sub">Tecnologias e competências.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <!-- Tecnologias -->
+        <div class="card">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-4">Tecnologias</h3>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="skill-badge primary">HTML</span>
+            <span class="skill-badge primary">CSS</span>
+            <span class="skill-badge primary">JavaScript</span>
+            <span class="skill-badge secondary">C++</span>
+            <span class="skill-badge secondary">C</span>
+            <span class="skill-badge secondary">C#</span>
+            <span class="skill-badge secondary">Python</span>
+            <span class="skill-badge secondary">Git/GitHub</span>
+          </div>
+          <hr class="border-stone-200 dark:border-stone-700 mb-4">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-3">Competências</h3>
+          <ul class="text-sm space-y-1.5 text-stone-600 dark:text-stone-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-xs"></i>Criação de Ambientes Docker</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-xs"></i>Gameficação</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-xs"></i>Ideias Diferentes</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent text-xs"></i>Boas práticas de legibilidade de código(tento)</li>
+          </ul>
+        </div>
+
+        <!-- Nível -->
+        <div class="card">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-5">Nível de familiaridade</h3>
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="font-medium">HTML</span>
+                <span class="text-stone-400 text-xs">Básico — 30%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:30%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="font-medium">CSS</span>
+                <span class="text-stone-400 text-xs">Básico — 30%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:30%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="font-medium">JavaScript</span>
+                <span class="text-stone-400 text-xs">Básico — 25%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJETOS ─────────────────────────────────────── -->
+    <section id="projetos" class="scroll-section">
+      <div class="section-header">
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-sub">Alguns trabalhos desenvolvidos.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+
+        <!-- Card 1 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <h3 class="font-display text-lg">TermoCruzado</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mb-3 leading-relaxed">
+            Implementação de um jogo que mistura Termo e palavras-cruzadas.
+          </p>
+          <ul class="text-xs text-stone-500 dark:text-stone-400 space-y-1 mb-5">
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Personalização de Página</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Lógica em JavaScript</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Mecânica de Jogo</li>
+          </ul>
+          <div class="mt-auto flex gap-2">
+            <a href="https://github.com/pradohugo/programa-o-web-game.git" target="_blank" rel="noreferrer" class="btn-project-outline">
+              <i class="fa-brands fa-github mr-1"></i>Repositório
+            </a>
+            <a href="#" target="_blank" rel="noreferrer" class="btn-project-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <h3 class="font-display text-lg">Esse Trem Aqui</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="tag">HTML</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">Tailwind</span>
+          </div>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mb-3 leading-relaxed">
+            Página pessoal com seções, navegação e tema claro/escuro.
+          </p>
+          <ul class="text-xs text-stone-500 dark:text-stone-400 space-y-1 mb-5">
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Grid responsivo</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Componentes (cards, navbar)</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Dois frameworks CSS</li>
+          </ul>
+          <div class="mt-auto flex gap-2">
+            <a href="#" target="_blank" rel="noreferrer" class="btn-project-outline">
+              <i class="fa-brands fa-github mr-1"></i>Repo
+            </a>
+            <a href="#" target="_blank" rel="noreferrer" class="btn-project-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <h3 class="font-display text-lg">Futuro Projeto Web</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="tag">Frontend</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mb-3 leading-relaxed">
+            Algum trem com Django.
+          </p>
+          <ul class="text-xs text-stone-500 dark:text-stone-400 space-y-1 mb-5">
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>HTML + CSS</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>JavaScript</li>
+            <li><i class="fa-solid fa-caret-right text-accent mr-1"></i>Django</li>
+          </ul>
+          <div class="mt-auto flex gap-2">
+            <a href="#" target="_blank" rel="noreferrer" class="btn-project-outline">
+              <i class="fa-brands fa-github mr-1"></i>Repo
+            </a>
+            <a href="#" target="_blank" rel="noreferrer" class="btn-project-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── INTERESSES ──────────────────────────────────── -->
+    <section id="interesses" class="scroll-section">
+      <div class="section-header">
+        <h2 class="section-title">Interesses</h2>
+        <p class="section-sub">Áreas que gosto de estudar e pesquisar.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="card">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-4">Áreas de interesse</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-accent text-xs"></i>Desenvolvimento Web backend</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-accent text-xs"></i>Mineração de Dados</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-accent text-xs"></i>Desenvolvimento de Jogos</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-accent text-xs"></i>Realidade Virtual</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-accent text-xs"></i>IA</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold text-sm uppercase tracking-wider text-stone-400 mb-4">Atividades</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mb-4 leading-relaxed">
+            Participo de projeto de IC voltado para IoT e café e tento aprender um pouquinho das diversas coisas da área de compuatação
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="activity-badge"><i class="fa-solid fa-book mr-1.5"></i>Estudos</span>
+            <span class="activity-badge"><i class="fa-solid fa-people-group mr-1.5"></i>Trabalho em equipe</span>
+            <span class="activity-badge"><i class="fa-solid fa-terminal mr-1.5"></i>Projetos práticos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTATO ──────────────────────────────────────── -->
+    <section id="contato" class="scroll-section">
+      <div class="section-header">
+        <h2 class="section-title">Contato</h2>
+        <p class="section-sub">Como falar comigo.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="card">
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+              <span>hugo.lima5@estudante.ufla.br</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
+              <a href="https://github.com/pradohugo" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">github.com/pradohugo</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">linkedin.com/in/não-tenho</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-brands fa-instagram"></i></span>
+              <a href="https://www.instagram.com/pprado.hugo" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">instagram.com/pprado.hugo</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-brands fa-facebook"></i></span>
+              <a href="https://facebook.com/" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">facebook.com/não-tenho</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="contact-icon"><i class="fa-brands fa-youtube"></i></span>
+              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">youtube.com/não-tenho</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="border-t border-stone-200 dark:border-stone-800 py-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-stone-400">
+      <span>© <span id="year"></span> Página Pessoal — Hugo Prado Lima</span>
+      <span>Feito com HTML · Tailwind CSS · JavaScript</span>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
